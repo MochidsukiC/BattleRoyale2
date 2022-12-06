@@ -14,6 +14,7 @@ public final class Battleroyale2 extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        getLogger().info("Battle Royale 2 Pluginがおねんねした");
         // Plugin shutdown logic
     }
 }
