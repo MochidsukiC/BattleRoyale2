@@ -1,0 +1,6 @@
+name: Battleroyale2
+version: '${project.version}'
+main: net.mochidsuki.corsica.battleroyale2.Battleroyale2
+api-version: 1.19
+authors: [ CTT ]
+description: Corsica's BattleRoyale 2
