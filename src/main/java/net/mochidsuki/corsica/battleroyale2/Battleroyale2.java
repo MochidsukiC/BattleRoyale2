@@ -22,10 +22,9 @@ public final class Battleroyale2 extends JavaPlugin {
     }
 }
 
-class b{
-    static int[] now;
-    static int r;
-    static int time;
+class v{
+    
 }
+
 
 
