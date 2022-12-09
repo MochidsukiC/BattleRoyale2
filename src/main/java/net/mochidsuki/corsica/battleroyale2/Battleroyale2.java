@@ -23,8 +23,11 @@ public final class Battleroyale2 extends JavaPlugin {
 }
 
 class v{
-    
+    static int time;
 }
 
+public class mainmanager extends Bukkit.Runnable{
+    
+}
 
 
