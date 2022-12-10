@@ -4,3 +4,11 @@ main: net.mochidsuki.corsica.battleroyale2.Battleroyale2
 api-version: 1.19
 authors: [ CTT ]
 description: Corsica's BattleRoyale 2
+
+commands:
+  gamelound:
+    aliases: [gl]
+    description: ゲームのラウンド進行状況
+    permission: clock.command.gamelound
+    permission-message: Permission denied
+    usage:

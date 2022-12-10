@@ -10,6 +10,8 @@ public final class Battleroyale2 extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Battle Royale 2 Pluginが目を覚ました！");
+        getServer().getPluginManager().registerEvents(new event(), this);
+
 
         // Plugin startup logic
 
@@ -22,12 +24,17 @@ public final class Battleroyale2 extends JavaPlugin {
     }
 }
 
-class v{
-    static int time;
+
+class b{
+    static int[] now;
+    static int r;
 }
 
-public class mainmanager extends Bukkit.Runnable{
-    
+class v{
+    static int time;
+    static int gamelound;
 }
+
+
 
 

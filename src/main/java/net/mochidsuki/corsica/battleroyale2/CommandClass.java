@@ -8,8 +8,8 @@ public class CommandClass implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(){
-            
+        if(command.getName().equalsIgnoreCase("gamelound")){
+        v.gamelound = Integer.valueOf(args[0]);
         }
         return false;
     }
