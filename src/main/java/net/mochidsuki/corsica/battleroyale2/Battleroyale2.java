@@ -1,10 +1,11 @@
 package net.mochidsuki.corsica.battleroyale2;
 
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Battleroyale2 extends JavaPlugin {
-
+    private static Plugin plugin;
 
     @Override
     public void onEnable() {
@@ -15,6 +16,7 @@ public final class Battleroyale2 extends JavaPlugin {
         v.mr = config.getInt("MAP.Radius");
         v.mcx = config.getInt("MAP.Center.x");
         v.mcz = config.getInt("MAP.Center.z");
+        plugin = this;
 
         // Plugin startup logic
 
@@ -25,6 +27,9 @@ public final class Battleroyale2 extends JavaPlugin {
         getLogger().info("Battle Royale 2 Pluginがおねんねした");
         // Plugin shutdown logic
     }
+    public static Plugin getPlugin() {
+        return plugin;
+    }
 }
 
 
@@ -32,7 +37,6 @@ public final class Battleroyale2 extends JavaPlugin {
 
 class v{
     static int[] now;
-    static int time;
     static int gameround;
     static int mr;
     static int mcx;
