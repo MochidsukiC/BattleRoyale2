@@ -6,13 +6,13 @@ authors: [ CTT ]
 description: Corsica's BattleRoyale 2
 
 commands:
-  gamelound:
-    aliases: [gl]
+  gameround:
+    aliases: [gr]
     description: ゲームのラウンド進行状況
     permission: battleroyale2.command.gamelound
     permission-message: Permission denied
     usage:
-  debuger:
+  debugerb:
     description: debug用
     permission: battleroyale2.command.debuger
     permission-message: Permission denied

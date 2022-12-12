@@ -11,10 +11,10 @@ public class CommandClass implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(command.getName().equalsIgnoreCase("gamelound")){
+        if(command.getName().equalsIgnoreCase("gameround")){
             v.gameround = Integer.parseInt(args[0]);
             int[] center = new int[3];
-            int[] speed = new int[3];
+            int[] speed = new int[4];
             int radius = 0;
             int rtime = 0;
             int stime = 0;
@@ -27,9 +27,13 @@ public class CommandClass implements CommandExecutor {
                     center[2] = v.mcz;
                     rtime = 96;
                     stime = 90;
+                    v.now[0] = v.mcx+v.mr;
+                    v.now[1] = v.mcx-v.mr;
+                    v.now[2] = v.mcz+v.mr;
+                    v.now[3] = v.mcz-v.mr;
                     break;
                 case 2:
-                    radius = (int)(v.mr * 0.8);
+                    radius = (int)(radius * 0.8);
                     radiusk = 0.6;
                     break;
             }
@@ -67,7 +71,7 @@ public class CommandClass implements CommandExecutor {
                     center[2] = (int)(center[2] - radius*(1-radiusk));
                     break;
             }
-            int[] target = new int[3];
+            int[] target = new int[4];
             target[0] = (int)(center[1] + radius*radiusk);
             target[1] = (int)(center[1] - radius*radiusk);
             target[2] = (int)(center[2] + radius*radiusk);
@@ -81,7 +85,7 @@ public class CommandClass implements CommandExecutor {
             new border(speed,radius,rtime).runTaskTimer(Battleroyale2.getPlugin(), stime, 20L);
             return true;
         }
-        if(command.getName().equalsIgnoreCase("debuger")){
+        if(command.getName().equalsIgnoreCase("debugerb")){
             sender.sendMessage(v.now[0]+","+v.now[1]+","+v.now[2]+","+v.now[3]);
         }
         return false;
