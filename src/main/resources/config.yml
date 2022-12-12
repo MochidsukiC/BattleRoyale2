@@ -5,5 +5,5 @@ MAP:
   Radius: 1000
 Ring:
   Round1:
-    stime: 5L
+    stime: 90
     vtime: 96
