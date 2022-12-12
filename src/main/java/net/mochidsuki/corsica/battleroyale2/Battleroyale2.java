@@ -11,14 +11,13 @@ public final class Battleroyale2 extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Battle Royale 2 Pluginが目を覚ました！");
         getServer().getPluginManager().registerEvents(new event(), this);
-        getCommand("gameround").setExecutor(new CommandClass()); //timer
-        getCommand("debugerb").setExecutor(new CommandClass()); //debuger
-        saveDefaultConfig();
-        FileConfiguration config = getConfig();
-        v.mr = config.getInt("MAP.Radius");
-        v.mcx = config.getInt("MAP.Center.x");
-        v.mcz = config.getInt("MAP.Center.z");
+        getCommand("gameround").setExecutor(new CommandClass()); //gameround
+        getCommand("debugerb").setExecutor(new CommandClass()); //debugerb
+        getCommand("brgame").setExecutor(new CommandClass()); //brgame
         plugin = this;
+        Config config = new Config(plugin);
+        config.load();
+
 
         // Plugin startup logic
 
@@ -32,13 +31,12 @@ public final class Battleroyale2 extends JavaPlugin {
     public static Plugin getPlugin() {
         return plugin;
     }
+
 }
 
 
-
-
 class v{
-    static int[] now = new int[4];
+    static double[] now = new double[4];
     static int gameround;
     static int mr;
     static int mcx;
