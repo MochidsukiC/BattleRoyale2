@@ -3,3 +3,7 @@ MAP:
     x: 0
     z: 0
   Radius: 1000
+Ring:
+  Round1:
+    stime: 5L
+    vtime: 96

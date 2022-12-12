@@ -28,7 +28,7 @@ public class CommandClass implements CommandExecutor {
                     center[1] = v.mcx;
                     center[2] = v.mcz;
                     rtime = 96;
-                    stime = 90L;
+                    stime = v.roundstime[1];
                     v.now[0] = v.mcx+v.mr;
                     v.now[1] = v.mcx-v.mr;
                     v.now[2] = v.mcz+v.mr;
@@ -97,7 +97,7 @@ public class CommandClass implements CommandExecutor {
             }
         }
         if(command.getName().equalsIgnoreCase("debugerb")){
-            sender.sendMessage(v.now[0]+","+v.now[1]+","+v.now[2]+","+v.now[3]);
+            sender.sendMessage(v.now[0]+","+v.now[1]+","+v.now[2]+","+v.now[3]+","+v.roundstime[1]);
             return true;
         }
         return false;

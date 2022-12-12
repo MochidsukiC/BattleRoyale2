@@ -41,6 +41,8 @@ class v{
     static int mr;
     static int mcx;
     static int mcz;
+    static long roundstime[] = new long[5];
+    static int roundvtime[] = new int[5];
 }
 
 
