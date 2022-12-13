@@ -1,11 +1,16 @@
 package net.mochidsuki.corsica.battleroyale2;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import java.util.Random;
 
+import static net.mochidsuki.corsica.battleroyale2.v.now;
 
 
 public class CommandClass implements CommandExecutor {
@@ -21,6 +26,8 @@ public class CommandClass implements CommandExecutor {
             int rtime=0;
             long stime=0;
             double radiusk=0;
+            center[1] = (int)(v.now[1] + (v.now[0]-v.now[1])/2);
+            center[2] = (int)(v.now[3] + (v.now[2]-v.now[3])/2);
             switch (v.gameround){
                 case 1:
                     radius = v.mr;
@@ -29,10 +36,10 @@ public class CommandClass implements CommandExecutor {
                     center[2] = v.mcz;
                     rtime = v.roundrtime[1];
                     stime = v.roundstime[1];
-                    v.now[0] = v.mcx+v.mr;
-                    v.now[1] = v.mcx-v.mr;
-                    v.now[2] = v.mcz+v.mr;
-                    v.now[3] = v.mcz-v.mr;
+                    now[0] = v.mcx+v.mr;
+                    now[1] = v.mcx-v.mr;
+                    now[2] = v.mcz+v.mr;
+                    now[3] = v.mcz-v.mr;
                     break;
                 case 2:
                     radius = (int)(v.mr * 0.5);
@@ -105,12 +112,60 @@ public class CommandClass implements CommandExecutor {
             target[2] = (int)(center[2] + radius*radiusk);
             target[3] = (int)(center[2] - radius*radiusk);
 
-            speed[0] = (target[0] - v.now[0])/rtime/20;
-            speed[1] = (target[1] - v.now[1])/rtime/20;
-            speed[2] = (target[2] - v.now[2])/rtime/20;
-            speed[3] = (target[3] - v.now[3])/rtime/20;
+            speed[0] = (target[0] - now[0])/rtime/20;
+            speed[1] = (target[1] - now[1])/rtime/20;
+            speed[2] = (target[2] - now[2])/rtime/20;
+            speed[3] = (target[3] - now[3])/rtime/20;
+
+            //元枠クリア
+            int x= (int)v.now[0]+1;
+            int mx= (int)v.now[1]-1;
+            int z= (int)v.now[2]+1;
+            int mz= (int)v.now[3]-1;
+            for(; mx < x; mx = mx+1){
+                World world = Bukkit.getWorld("world");
+                BlockData block = Material.getMaterial("AIR").createBlockData();
+                world.getBlockAt(mx,20,z+1).setBlockData(block);
+                world.getBlockAt(mx,20,mz+1).setBlockData(block);
+                world.getBlockAt(mx,20,z).setBlockData(block);
+                world.getBlockAt(mx,20,mz).setBlockData(block);
+                world.getBlockAt(mx,20,z-1).setBlockData(block);
+                world.getBlockAt(mx,20,mz-1).setBlockData(block);
+            }
+            mx= (int)v.now[1]-1;
+            for(; mz < z; mz = mz+1) {
+                World world = Bukkit.getWorld("world");
+                BlockData block = Material.getMaterial("AIR").createBlockData();
+                world.getBlockAt(x, 20, mz).setBlockData(block);
+                world.getBlockAt(mx, 20, mz).setBlockData(block);
+                world.getBlockAt(x+1, 20, mz).setBlockData(block);
+                world.getBlockAt(mx+1, 20, mz).setBlockData(block);
+                world.getBlockAt(x-1, 20, mz).setBlockData(block);
+                world.getBlockAt(mx-1, 20, mz).setBlockData(block);
+            }
+            mz = (int)v.now[3]-1;
+            //新規枠
+            int nx= target[0]+1;
+            int nmx= target[1]-1;
+            int nz= target[2]+1;
+            int nmz= target[3]-1;
+            for(; nmx < nx; nmx = nmx+1){
+                World world = Bukkit.getWorld("world");
+                BlockData block = Material.getMaterial("REDSTONE_BLOCK").createBlockData();
+                world.getBlockAt(nmx,20,nz).setBlockData(block);
+                world.getBlockAt(nmx,20,nmz).setBlockData(block);
+            }
+            nmx= target[1]-1;
+            for(; nmz < nz; nmz = nmz+1) {
+                World world = Bukkit.getWorld("world");
+                BlockData block = Material.getMaterial("REDSTONE_BLOCK").createBlockData();
+                world.getBlockAt(nx, 20, nmz).setBlockData(block);
+                world.getBlockAt(nmx, 20, nmz).setBlockData(block);
+            }
+            nmz= target[3]-1;
 
             new border(speed,radius,rtime).runTaskTimer(Battleroyale2.getPlugin(), stime*20, 1L);
+
             return true;
         }
         if(command.getName().equalsIgnoreCase("brgame")){
@@ -121,7 +176,7 @@ public class CommandClass implements CommandExecutor {
             }
         }
         if(command.getName().equalsIgnoreCase("debugerb")){
-            sender.sendMessage(v.now[0]+","+v.now[1]+","+v.now[2]+","+v.now[3]+","+v.roundstime[1]);
+            sender.sendMessage(now[0]+","+ now[1]+","+ now[2]+","+ now[3]+","+v.roundstime[1]);
             return true;
         }
         return false;

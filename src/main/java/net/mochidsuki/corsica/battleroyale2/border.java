@@ -29,7 +29,6 @@ public class border extends BukkitRunnable {
             World world = Bukkit.getWorld("world");
             world.getWorldBorder().setCenter(v.now[1] + (v.now[0] - v.now[1])/2,v.now[3] + (v.now[2] - v.now[3])/2);
             world.getWorldBorder().setSize((v.now[0]-v.now[1]));
-            world.getWorldBorder().setDamageAmount(0.00000001);
 
 
             /**

@@ -27,15 +27,19 @@ public class event implements Listener{
         if(cause.equals(SUFFOCATION)){
             switch (v.gameround) {
                 case 1:
-                event.setDamage(0.4);
                 case 2:
                     event.setDamage(0.4);
+                    break;
                 case 3:
                     event.setDamage(1.2);
+                    break;
                 case 4:
                     event.setDamage(2.4);
+                    break;
                 case 5:
+                case 6:
                     event.setDamage(2.9);
+                    break;
 
             }
         }
