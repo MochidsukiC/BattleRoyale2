@@ -2,11 +2,14 @@ package net.mochidsuki.corsica.battleroyale2;
 
 
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDropItemEvent;
+import org.bukkit.inventory.meta.Damageable;
 
 import static org.bukkit.event.entity.EntityDamageEvent.DamageCause.SUFFOCATION;
 
@@ -22,7 +25,19 @@ public class event implements Listener{
     public void EntityDamageEvent(EntityDamageEvent event){
         EntityDamageEvent.DamageCause cause = event.getCause();
         if(cause.equals(SUFFOCATION)){
-            event.getEntity().sendMessage();
+            switch (v.gameround) {
+                case 1:
+                event.setDamage(0.4);
+                case 2:
+                    event.setDamage(0.4);
+                case 3:
+                    event.setDamage(1.2);
+                case 4:
+                    event.setDamage(2.4);
+                case 5:
+                    event.setDamage(2.9);
+
+            }
         }
     }
 

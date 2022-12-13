@@ -23,6 +23,16 @@ public class Config {
         v.mcx = config.getInt("MAP.Center.x");
         v.mcz = config.getInt("MAP.Center.z");
         v.roundstime[1] = config.getInt("Ring.Round1.stime");
-        v.roundvtime[1] = config.getInt("Ring.Round1.vtime");
+        v.roundrtime[1] = config.getInt("Ring.Round1.vtime");
+        v.roundstime[2] = config.getInt("Ring.Round2.stime");
+        v.roundrtime[2] = config.getInt("Ring.Round2.vtime");
+        v.roundstime[3] = config.getInt("Ring.Round3.stime");
+        v.roundrtime[3] = config.getInt("Ring.Round3.vtime");
+        v.roundstime[4] = config.getInt("Ring.Round4.stime");
+        v.roundrtime[4] = config.getInt("Ring.Round4.vtime");
+        v.roundstime[5] = config.getInt("Ring.Round5.stime");
+        v.roundrtime[5] = config.getInt("Ring.Round5.vtime");
+        v.roundstime[6] = config.getInt("Ring.Round6.stime");
+        v.roundrtime[6] = config.getInt("Ring.Round6.vtime");
     }
 }

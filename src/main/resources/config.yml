@@ -6,4 +6,19 @@ MAP:
 Ring:
   Round1:
     stime: 90
-    vtime: 96
+    vtime: 180
+  Round2:
+    stime: 120
+    vtime: 45
+  Round3:
+    stime: 165
+    vtime: 45
+  Round4:
+    stime: 135
+    vtime: 40
+  Round5:
+    stime: 90
+    vtime: 40
+  Round6:
+    stime: 60
+    vtime: 120

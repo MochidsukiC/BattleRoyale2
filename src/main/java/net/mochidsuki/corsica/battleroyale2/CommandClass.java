@@ -17,17 +17,17 @@ public class CommandClass implements CommandExecutor {
             v.gameround = Integer.parseInt(args[0]);
             int[] center = new int[3];
             double[] speed = new double[4];
-            int radius = 0;
-            int rtime = 0;
-            long stime = 0L;
-            double radiusk = 0;
+            int radius=0;
+            int rtime=0;
+            long stime=0;
+            double radiusk=0;
             switch (v.gameround){
                 case 1:
                     radius = v.mr;
-                    radiusk = 0.8;
+                    radiusk = 0.5;
                     center[1] = v.mcx;
                     center[2] = v.mcz;
-                    rtime = 96;
+                    rtime = v.roundrtime[1];
                     stime = v.roundstime[1];
                     v.now[0] = v.mcx+v.mr;
                     v.now[1] = v.mcx-v.mr;
@@ -35,10 +35,34 @@ public class CommandClass implements CommandExecutor {
                     v.now[3] = v.mcz-v.mr;
                     break;
                 case 2:
-                    radius = (int)(radius * 0.8);
+                    radius = (int)(v.mr * 0.5);
+                    radiusk = 0.65;
+                    rtime = v.roundrtime[2];
+                    stime = v.roundstime[2];
+                    break;
+                case 3:
+                    radius = (int)(v.mr * 0.5*0.65);
                     radiusk = 0.6;
-                    rtime = 50;
-                    stime = 90L;
+                    rtime = v.roundrtime[3];
+                    stime = v.roundstime[3];
+                    break;
+                case 4:
+                    radius = (int)(v.mr * 0.5*0.65*0.6);
+                    radiusk = 0.5;
+                    rtime = v.roundrtime[4];
+                    stime = v.roundstime[4];
+                    break;
+                case 5:
+                    radius = (int)(v.mr * 0.5*0.65*0.6*0.5);
+                    radiusk = 0.5;
+                    rtime = v.roundrtime[5];
+                    stime = v.roundstime[5];
+                    break;
+                case 6:
+                    radius = (int)(v.mr * 0.5*0.65*0.6*0.5*0.5);
+                    radiusk = 0;
+                    rtime = v.roundrtime[6];
+                    stime = v.roundstime[6];
                     break;
             }
             Random rnd = new Random();
