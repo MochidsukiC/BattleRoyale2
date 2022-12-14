@@ -1,7 +1,6 @@
 package net.mochidsuki.corsica.battleroyale2;
 
 import org.bukkit.*;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class border extends BukkitRunnable {
@@ -31,7 +30,7 @@ public class border extends BukkitRunnable {
             world.getWorldBorder().setSize((v.now[0]-v.now[1]));
 
 
-            /**
+            /*
             int x= (int)v.now[0];
             int mx= (int)v.now[1];
             int z= (int)v.now[2];
@@ -48,10 +47,13 @@ public class border extends BukkitRunnable {
                 world.getBlockAt(x,20,mz).setBlockData(block);
                 world.getBlockAt(mx,20,mz).setBlockData(block);
             }
-             **/
+             */
 
 
         }else{
+            Roundsystemc r = new Roundsystemc();
+            v.gameround = v.gameround + 1;
+            r.Roundsystem();
             cancel();
         }
 
